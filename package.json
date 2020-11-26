@@ -1,0 +1,38 @@
+{
+  "name": "@byteshift/events",
+  "version": "1.0.0",
+  "description": "A simple event emitter and subscriber library.",
+  "author": "Harold Iedema <harold@iedema.me>",
+  "devDependencies": {
+    "rollup": "^2.26.0",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "rollup-plugin-serve": "^1.0.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+  },
+  "main": "dist/index.js",
+  "keywords": [
+    "byteshift",
+    "web components",
+    "events",
+    "event",
+    "subscribtion",
+    "dispatcher"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haroldiedema/byteshift-events/issues"
+  },
+  "homepage": "https://github.com/haroldiedema/byteshift-events#readme"
+}

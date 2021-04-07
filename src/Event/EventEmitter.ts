@@ -1,11 +1,9 @@
-/* Byteshift Elements                                                              _         _             __   _ _____
- *    A self-encapsulating WebComponent framework                                 | |__ _  _| |_ ___  ___ / /  (_) _/ /_
- *                                                                                | '_ \ || |  _/ -_|(_-</ _ \/ / _/ __/
- * (C)2020, Harold Iedema <harold@iedema.me>                                      |_.__/\_, |\__\___/___/_//_/_/_/ \__/
- * See LICENSE for licensing information                                                |__/               E V E N T S
+/* bouw7 Mercury                                                                        __  __
+ *    Business Automation Platform                                                     |  \/  |___ _ _ __ _  _ _ _ _  _
+ *                                                                                     | |\/| / -_) '_/ _| || | '_| || |
+ * Copyright 2021, Bouw7 Technologies BV                                               |_|  |_\___|_| \__|\_,_|_|  \_, |
+ * All rights reserved.                                                                                            |__/
  */
-'use strict';
-
 import {EventSubscriber} from './EventSubscriber';
 
 export class EventEmitter
@@ -20,7 +18,7 @@ export class EventEmitter
      * @param {(...any) => any} callback
      * @return {EventSubscriber}
      */
-    public once(eventName: string, callback: (...any: any[]) => any): EventSubscriber
+    public once(eventName: string, callback: (...args: any[]) => any): EventSubscriber
     {
         return this.on(eventName, callback, true);
     }
@@ -33,7 +31,7 @@ export class EventEmitter
      * @param {boolean} isOnce
      * @return {EventSubscriber}
      */
-    public on(eventName: string, callback: (...any: any[]) => any, isOnce?: boolean): EventSubscriber
+    public on(eventName: string, callback: (...args: any[]) => any, isOnce?: boolean): EventSubscriber
     {
         if (!this._events.has(eventName)) {
             this._events.set(eventName, new Set());
@@ -67,6 +65,14 @@ export class EventEmitter
      */
     public emit(eventName: string, ...args: any[]): void
     {
+        if (eventName === '*') {
+            throw new Error('Event "*" cannot be emitted.');
+        }
+
+        if (this._events.has('*')) {
+            this._events.get('*').forEach((sub) => sub.emit(eventName, ...args));
+        }
+
         if (!this._events.has(eventName)) {
             this._emitted.add(eventName);
             return;

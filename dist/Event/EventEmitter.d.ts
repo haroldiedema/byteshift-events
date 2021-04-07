@@ -9,7 +9,7 @@ export declare class EventEmitter {
      * @param {(...any) => any} callback
      * @return {EventSubscriber}
      */
-    once(eventName: string, callback: (...any: any[]) => any): EventSubscriber;
+    once(eventName: string, callback: (...args: any[]) => any): EventSubscriber;
     /**
      * Emits the given callback every time the given event fires.
      *
@@ -18,7 +18,7 @@ export declare class EventEmitter {
      * @param {boolean} isOnce
      * @return {EventSubscriber}
      */
-    on(eventName: string, callback: (...any: any[]) => any, isOnce?: boolean): EventSubscriber;
+    on(eventName: string, callback: (...args: any[]) => any, isOnce?: boolean): EventSubscriber;
     /**
      * Unsubscribes the given event subscriber.
      *

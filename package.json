@@ -1,6 +1,6 @@
 {
   "name": "@byteshift/events",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple event emitter and subscriber library.",
   "author": "Harold Iedema <harold@iedema.me>",
   "devDependencies": {
